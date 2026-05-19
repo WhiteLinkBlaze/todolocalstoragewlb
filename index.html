@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local Todo</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./src/app.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="todo-app" aria-labelledby="app-title">
+        <header class="app-header">
+          <div>
+            <p class="eyebrow">localStorage</p>
+            <h1 id="app-title">오늘 할 일</h1>
+          </div>
+          <p class="date-label" id="todayLabel"></p>
+        </header>
+
+        <form class="todo-form" id="todoForm" autocomplete="off">
+          <label class="sr-only" for="todoInput">새 할 일</label>
+          <input
+            id="todoInput"
+            name="todo"
+            type="text"
+            maxlength="80"
+            placeholder="할 일을 입력하세요"
+            required
+          />
+          <button class="primary-button" type="submit" aria-label="할 일 추가">
+            <span aria-hidden="true">+</span>
+            추가
+          </button>
+        </form>
+
+        <div class="toolbar" aria-label="할 일 보기 필터">
+          <button class="filter-button is-active" type="button" data-filter="all">전체</button>
+          <button class="filter-button" type="button" data-filter="active">진행중</button>
+          <button class="filter-button" type="button" data-filter="completed">완료</button>
+        </div>
+
+        <ul class="todo-list" id="todoList" aria-live="polite"></ul>
+
+        <footer class="todo-footer">
+          <span id="todoCount">남은 할 일 0개</span>
+          <button class="ghost-button" id="clearCompletedButton" type="button">
+            완료 항목 정리
+          </button>
+        </footer>
+      </section>
+    </main>
+  </body>
+</html>
