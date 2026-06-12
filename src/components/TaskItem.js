@@ -193,18 +193,18 @@ export default function TaskItem({ todo, isFirst, onUpdate, onDelete, onRepeatCo
           >
             {expanded ? '▲' : '▼'}
           </button>
-          <div className="flex gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="flex gap-0.5">
             <button
               onClick={() => setEditingTitle(true)}
               aria-label="수정"
-              className="p-1.5 text-gray-400 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-200 transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+              className="p-1.5 text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-gray-200 transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               ✎
             </button>
             <button
               onClick={onDelete}
               aria-label="삭제"
-              className="p-1.5 text-gray-400 dark:text-gray-500 hover:text-white hover:bg-red-400 transition-colors rounded-lg"
+              className="p-1.5 text-gray-300 dark:text-gray-600 hover:text-white hover:bg-red-400 transition-colors rounded-lg"
             >
               ×
             </button>
@@ -310,14 +310,14 @@ export default function TaskItem({ todo, isFirst, onUpdate, onDelete, onRepeatCo
                     className="sr-only"
                   />
                 </label>
-                <div className="flex gap-0.5 opacity-0 group-hover/sub:opacity-100 transition-opacity">
+                <div className="flex gap-0.5">
                   <button
                     onClick={() => { setEditingSubId(sub.id); setEditingSubValue(sub.title) }}
-                    className="p-1 text-gray-400 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-200 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-xs"
+                    className="p-1 text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-gray-200 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-xs"
                   >✎</button>
                   <button
                     onClick={() => deleteSubTask(sub.id)}
-                    className="p-1 text-gray-400 dark:text-gray-500 hover:text-white hover:bg-red-400 rounded text-xs"
+                    className="p-1 text-gray-300 dark:text-gray-600 hover:text-white hover:bg-red-400 rounded text-xs"
                   >×</button>
                 </div>
               </div>
