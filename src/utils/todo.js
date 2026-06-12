@@ -21,6 +21,13 @@ export function isOverdue(dateStr, completed) {
   return new Date(dateStr + 'T00:00:00') < today
 }
 
+export function getDaysUntilDue(dateStr) {
+  if (!dateStr) return null
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
+  return Math.ceil((new Date(dateStr + 'T00:00:00') - today) / (1000 * 60 * 60 * 24))
+}
+
 export function buildTasksByDate(todos) {
   const map = {}
   todos.forEach(todo => {
@@ -37,3 +44,45 @@ export function buildTasksByDate(todos) {
   })
   return map
 }
+
+export function sortTodos(todos, sortKey) {
+  if (sortKey === 'default') return todos
+  const sorted = [...todos]
+  if (sortKey === 'dueDate') {
+    return sorted.sort((a, b) => {
+      if (!a.dueDate && !b.dueDate) return 0
+      if (!a.dueDate) return 1
+      if (!b.dueDate) return -1
+      return a.dueDate.localeCompare(b.dueDate)
+    })
+  }
+  if (sortKey === 'name') return sorted.sort((a, b) => a.title.localeCompare(b.title, 'ko'))
+  if (sortKey === 'priority') {
+    const order = { high: 0, medium: 1, low: 2 }
+    return sorted.sort((a, b) => (order[a.priority] ?? 3) - (order[b.priority] ?? 3))
+  }
+  return sorted
+}
+
+export function getNextRepeatDate(dueDate, repeat) {
+  if (!dueDate || !repeat || repeat === 'none') return null
+  const d = new Date(dueDate + 'T00:00:00')
+  if (repeat === 'daily') d.setDate(d.getDate() + 1)
+  if (repeat === 'weekly') d.setDate(d.getDate() + 7)
+  if (repeat === 'monthly') d.setMonth(d.getMonth() + 1)
+  return toDateStr(d)
+}
+
+export const PRIORITY_OPTIONS = [
+  { value: null, label: '없음' },
+  { value: 'high', label: '높음', dot: 'bg-red-400', ring: 'ring-red-300' },
+  { value: 'medium', label: '보통', dot: 'bg-yellow-400', ring: 'ring-yellow-300' },
+  { value: 'low', label: '낮음', dot: 'bg-blue-400', ring: 'ring-blue-300' },
+]
+
+export const REPEAT_OPTIONS = [
+  { value: 'none', label: '반복 없음' },
+  { value: 'daily', label: '매일' },
+  { value: 'weekly', label: '매주' },
+  { value: 'monthly', label: '매월' },
+]

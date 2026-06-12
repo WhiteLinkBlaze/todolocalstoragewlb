@@ -42,7 +42,7 @@ export default function CalendarMonth({ todos, calendarDate, setCalendarDate }) 
         ))}
       </div>
 
-      <div className="grid grid-cols-7 border border-gray-100 rounded-2xl overflow-hidden bg-white shadow-sm">
+      <div className="grid grid-cols-7 border border-gray-100 dark:border-gray-700 rounded-2xl overflow-hidden bg-white dark:bg-gray-800 shadow-sm">
         {cells.map((day, idx) => {
           const col = idx % 7
           const isLastRow = idx >= cells.length - 7
