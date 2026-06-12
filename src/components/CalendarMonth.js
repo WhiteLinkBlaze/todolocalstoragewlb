@@ -25,11 +25,11 @@ export default function CalendarMonth({ todos, calendarDate, setCalendarDate }) 
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
-        <button onClick={prevMonth} className="p-2 text-gray-400 hover:text-gray-700 rounded-lg hover:bg-gray-100 transition-colors">
+        <button onClick={prevMonth} className="p-2 text-gray-400 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
           ←
         </button>
-        <span className="font-semibold text-gray-900">{year}년 {MONTHS[month]}</span>
-        <button onClick={nextMonth} className="p-2 text-gray-400 hover:text-gray-700 rounded-lg hover:bg-gray-100 transition-colors">
+        <span className="font-semibold text-gray-900 dark:text-white">{year}년 {MONTHS[month]}</span>
+        <button onClick={nextMonth} className="p-2 text-gray-400 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
           →
         </button>
       </div>
@@ -55,12 +55,12 @@ export default function CalendarMonth({ todos, calendarDate, setCalendarDate }) 
           return (
             <div
               key={idx}
-              className={`min-h-20 p-1.5 ${!isLastRow ? 'border-b' : ''} ${col !== 6 ? 'border-r' : ''} border-gray-50 ${!day ? 'bg-gray-50/40' : ''}`}
+              className={`min-h-20 p-1.5 ${!isLastRow ? 'border-b' : ''} ${col !== 6 ? 'border-r' : ''} border-gray-100 dark:border-gray-700 ${!day ? 'bg-gray-50/40 dark:bg-gray-700/30' : ''}`}
             >
               {day && (
                 <>
                   <div className={`text-xs font-medium w-6 h-6 flex items-center justify-center rounded-full mb-1 ${
-                    isToday ? 'bg-gray-900 text-white' : col === 0 ? 'text-red-400' : col === 6 ? 'text-blue-400' : 'text-gray-500'
+                    isToday ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900' : col === 0 ? 'text-red-400' : col === 6 ? 'text-blue-400' : 'text-gray-500 dark:text-gray-300'
                   }`}>
                     {day}
                   </div>
@@ -69,14 +69,14 @@ export default function CalendarMonth({ todos, calendarDate, setCalendarDate }) 
                       <div
                         key={item.id}
                         className={`text-xs truncate rounded px-1 py-0.5 leading-tight ${
-                          item.completed ? 'line-through text-gray-300' : ''
+                          item.completed ? 'line-through text-gray-300 dark:text-gray-600' : ''
                         } ${
                           item.isSubTask
-                            ? 'pl-2.5 text-gray-500'
-                            : 'bg-gray-100 text-gray-700'
+                            ? 'pl-2.5 text-gray-500 dark:text-gray-400'
+                            : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200'
                         }`}
                       >
-                        {item.isSubTask && <span className="text-gray-300 mr-0.5">└</span>}
+                        {item.isSubTask && <span className="text-gray-300 dark:text-gray-500 mr-0.5">└</span>}
                         {item.title}
                       </div>
                     ))}
