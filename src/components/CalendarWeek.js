@@ -41,11 +41,11 @@ export default function CalendarWeek({ todos, calendarDate, setCalendarDate }) {
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
-        <button onClick={prevWeek} className="p-2 text-gray-400 hover:text-gray-700 rounded-lg hover:bg-gray-100 transition-colors">
+        <button onClick={prevWeek} className="p-2 text-gray-400 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
           ←
         </button>
-        <span className="font-semibold text-gray-900">{fmt(weekStart)} – {fmt(endDay)}</span>
-        <button onClick={nextWeek} className="p-2 text-gray-400 hover:text-gray-700 rounded-lg hover:bg-gray-100 transition-colors">
+        <span className="font-semibold text-gray-900 dark:text-white">{fmt(weekStart)} – {fmt(endDay)}</span>
+        <button onClick={nextWeek} className="p-2 text-gray-400 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
           →
         </button>
       </div>
@@ -57,17 +57,17 @@ export default function CalendarWeek({ todos, calendarDate, setCalendarDate }) {
           const isToday = dateStr === today
 
           return (
-            <div key={dateStr} className="bg-white rounded-xl border border-gray-100 shadow-sm p-2 min-h-28">
+            <div key={dateStr} className="bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm p-2 min-h-28">
               <div className={`flex flex-col items-center justify-center w-8 h-8 rounded-full mb-2 mx-auto ${
-                isToday ? 'bg-gray-900' : ''
+                isToday ? 'bg-gray-900 dark:bg-white' : ''
               }`}>
                 <span className={`text-[9px] font-medium ${
-                  isToday ? 'text-white' : i === 0 ? 'text-red-400' : i === 6 ? 'text-blue-400' : 'text-gray-400'
+                  isToday ? 'text-white dark:text-gray-900' : i === 0 ? 'text-red-400' : i === 6 ? 'text-blue-400' : 'text-gray-400 dark:text-gray-500'
                 }`}>
                   {WEEKDAYS[i]}
                 </span>
                 <span className={`text-xs font-semibold leading-none ${
-                  isToday ? 'text-white' : i === 0 ? 'text-red-400' : i === 6 ? 'text-blue-400' : 'text-gray-700'
+                  isToday ? 'text-white dark:text-gray-900' : i === 0 ? 'text-red-400' : i === 6 ? 'text-blue-400' : 'text-gray-700 dark:text-gray-200'
                 }`}>
                   {day.getDate()}
                 </span>
@@ -78,19 +78,19 @@ export default function CalendarWeek({ todos, calendarDate, setCalendarDate }) {
                   <div
                     key={item.id}
                     className={`text-xs rounded px-1.5 py-1 truncate leading-tight ${
-                      item.completed ? 'line-through text-gray-300' : ''
+                      item.completed ? 'line-through text-gray-300 dark:text-gray-600' : ''
                     } ${
                       item.isSubTask
-                        ? 'pl-3 text-gray-500'
-                        : 'bg-gray-100 text-gray-700'
+                        ? 'pl-3 text-gray-500 dark:text-gray-400'
+                        : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200'
                     }`}
                   >
-                    {item.isSubTask && <span className="text-gray-300 mr-0.5">└</span>}
+                    {item.isSubTask && <span className="text-gray-300 dark:text-gray-500 mr-0.5">└</span>}
                     {item.title}
                   </div>
                 ))}
                 {items.length === 0 && (
-                  <p className="text-xs text-gray-200 text-center mt-2">없음</p>
+                  <p className="text-xs text-gray-300 dark:text-gray-600 text-center mt-2">없음</p>
                 )}
               </div>
             </div>
