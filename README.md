@@ -1,5 +1,10 @@
 # Todo localStorage
 
+과제 11 : Next.js(React) + 로컬 스토리지 기반 할일 리스트 웹앱 구현
+요구사항 : vercel 자동 배포
+GITHUB에 소스코드를 푸시하면 자동으로 vercel에 배포된 앱에 반영되어야 함(쉬움)
+vercel에 이미 있는 기능이라서 연결만 하면 끝
+
 브라우저 `localStorage`에 할 일을 저장하는 정적 Todo 앱입니다.
 
 ## 실행

@@ -51,6 +51,10 @@ coverage/
 .parcel-cache/
 .vite/
 
+# Next.js
+.next/
+out/
+
 # Runtime and temporary files
 tmp/
 temp/
@@ -63,3 +67,5 @@ temp/
 notes.local.md
 TODO.local.md
 *.local.md
+AGENTS.md
+Template*
