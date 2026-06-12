@@ -111,7 +111,7 @@ export default function TaskItem({ todo, isFirst, onUpdate, onDelete, onRepeatCo
       <div className="flex items-start gap-2 px-3 py-3 group">
         {/* 드래그 핸들 */}
         {dragProps && (
-          <span className="text-gray-200 dark:text-gray-700 cursor-grab active:cursor-grabbing mt-1 select-none flex-shrink-0 text-base leading-none">⠿</span>
+          <span className="text-gray-300 dark:text-gray-500 cursor-grab active:cursor-grabbing mt-1 select-none flex-shrink-0 text-base leading-none">⠿</span>
         )}
 
         {/* 체크박스 */}
@@ -146,7 +146,7 @@ export default function TaskItem({ todo, isFirst, onUpdate, onDelete, onRepeatCo
             />
           ) : (
             <div className="flex items-center gap-1.5 flex-wrap">
-              <span className={`text-sm ${todo.completed ? 'line-through text-gray-300 dark:text-gray-600' : 'text-gray-700 dark:text-gray-200'}`}>
+              <span className={`text-sm ${todo.completed ? 'line-through text-gray-300 dark:text-gray-400' : 'text-gray-700 dark:text-gray-200'}`}>
                 {todo.title}
               </span>
               <DDayBadge dueDate={todo.dueDate} completed={todo.completed} />
@@ -162,7 +162,7 @@ export default function TaskItem({ todo, isFirst, onUpdate, onDelete, onRepeatCo
               <span className="text-xs text-gray-400 dark:text-gray-500">🔄 {repeatLabel}</span>
             )}
             {todo.subTasks.length > 0 && (
-              <span className="text-xs text-gray-300 dark:text-gray-600">{completedSubs}/{todo.subTasks.length}</span>
+              <span className="text-xs text-gray-300 dark:text-gray-400">{completedSubs}/{todo.subTasks.length}</span>
             )}
           </div>
         </div>
@@ -175,7 +175,7 @@ export default function TaskItem({ todo, isFirst, onUpdate, onDelete, onRepeatCo
                 ? overdue
                   ? 'border-red-200 text-red-400 bg-red-50 dark:bg-red-900/20 dark:border-red-800'
                   : 'border-gray-200 dark:border-gray-600 text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600'
-                : 'border-dashed border-gray-200 dark:border-gray-600 text-gray-300 dark:text-gray-600 hover:text-gray-400 hover:border-gray-300'
+                : 'border-dashed border-gray-200 dark:border-gray-600 text-gray-300 dark:text-gray-400 hover:text-gray-400 hover:border-gray-300'
             }`}>
               {dueLabel ?? '날짜'}
             </span>
@@ -189,7 +189,7 @@ export default function TaskItem({ todo, isFirst, onUpdate, onDelete, onRepeatCo
           <button
             onClick={() => setExpanded(v => !v)}
             aria-label="펼치기"
-            className="p-1.5 text-gray-300 dark:text-gray-600 hover:text-gray-500 dark:hover:text-gray-400 transition-colors rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 text-xs"
+            className="p-1.5 text-gray-300 dark:text-gray-400 hover:text-gray-500 dark:hover:text-gray-400 transition-colors rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 text-xs"
           >
             {expanded ? '▲' : '▼'}
           </button>
@@ -197,14 +197,14 @@ export default function TaskItem({ todo, isFirst, onUpdate, onDelete, onRepeatCo
             <button
               onClick={() => setEditingTitle(true)}
               aria-label="수정"
-              className="p-1.5 text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-gray-200 transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+              className="p-1.5 text-gray-300 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               ✎
             </button>
             <button
               onClick={onDelete}
               aria-label="삭제"
-              className="p-1.5 text-gray-300 dark:text-gray-600 hover:text-white hover:bg-red-400 transition-colors rounded-lg"
+              className="p-1.5 text-gray-300 dark:text-gray-400 hover:text-white hover:bg-red-400 transition-colors rounded-lg"
             >
               ×
             </button>
@@ -284,12 +284,12 @@ export default function TaskItem({ todo, isFirst, onUpdate, onDelete, onRepeatCo
                     className="w-full text-xs border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-gray-900 bg-transparent text-gray-900 dark:text-white"
                   />
                 ) : (
-                  <span className={`text-xs block truncate ${sub.completed ? 'line-through text-gray-300 dark:text-gray-600' : 'text-gray-500 dark:text-gray-400'}`}>
+                  <span className={`text-xs block truncate ${sub.completed ? 'line-through text-gray-300 dark:text-gray-400' : 'text-gray-500 dark:text-gray-400'}`}>
                     {sub.title}
                   </span>
                 )}
                 {sub.dueDate && (
-                  <span className={`text-xs ${isOverdue(sub.dueDate, sub.completed) ? 'text-red-400' : 'text-gray-300 dark:text-gray-600'}`}>
+                  <span className={`text-xs ${isOverdue(sub.dueDate, sub.completed) ? 'text-red-400' : 'text-gray-300 dark:text-gray-400'}`}>
                     {formatDueDate(sub.dueDate)}
                   </span>
                 )}
@@ -299,7 +299,7 @@ export default function TaskItem({ todo, isFirst, onUpdate, onDelete, onRepeatCo
                   <span className={`text-xs px-1.5 py-0.5 rounded border ${
                     sub.dueDate
                       ? 'border-gray-200 dark:border-gray-600 text-gray-400 dark:text-gray-500 bg-gray-50 dark:bg-gray-700'
-                      : 'border-dashed border-gray-200 dark:border-gray-600 text-gray-300 dark:text-gray-600'
+                      : 'border-dashed border-gray-200 dark:border-gray-600 text-gray-300 dark:text-gray-400'
                   }`}>
                     {sub.dueDate ? formatDueDate(sub.dueDate) : '날짜'}
                   </span>
@@ -313,11 +313,11 @@ export default function TaskItem({ todo, isFirst, onUpdate, onDelete, onRepeatCo
                 <div className="flex gap-0.5">
                   <button
                     onClick={() => { setEditingSubId(sub.id); setEditingSubValue(sub.title) }}
-                    className="p-1 text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-gray-200 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-xs"
+                    className="p-1 text-gray-300 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-xs"
                   >✎</button>
                   <button
                     onClick={() => deleteSubTask(sub.id)}
-                    className="p-1 text-gray-300 dark:text-gray-600 hover:text-white hover:bg-red-400 rounded text-xs"
+                    className="p-1 text-gray-300 dark:text-gray-400 hover:text-white hover:bg-red-400 rounded text-xs"
                   >×</button>
                 </div>
               </div>
