@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import ListView from './ListView'
 import CalendarMonth from './CalendarMonth'
 import CalendarWeek from './CalendarWeek'
+import Sidebar from './Sidebar'
 
 const STORAGE_KEY = 'mission.todo.localStorage.items'
 const THEME_KEY = 'mission.todo.theme'
@@ -86,14 +87,19 @@ export default function TodoApp() {
         </div>
       </header>
 
-      <main className="max-w-2xl mx-auto px-4 py-6">
-        {view === 'list' && <ListView todos={todos} setTodos={setTodos} />}
-        {view === 'month' && (
-          <CalendarMonth todos={todos} calendarDate={calendarDate} setCalendarDate={setCalendarDate} />
-        )}
-        {view === 'week' && (
-          <CalendarWeek todos={todos} calendarDate={calendarDate} setCalendarDate={setCalendarDate} />
-        )}
+      <main className="max-w-5xl mx-auto px-4 py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-6">
+          <div>
+            {view === 'list' && <ListView todos={todos} setTodos={setTodos} />}
+            {view === 'month' && (
+              <CalendarMonth todos={todos} calendarDate={calendarDate} setCalendarDate={setCalendarDate} />
+            )}
+            {view === 'week' && (
+              <CalendarWeek todos={todos} calendarDate={calendarDate} setCalendarDate={setCalendarDate} />
+            )}
+          </div>
+          <Sidebar todos={todos} />
+        </div>
       </main>
     </div>
   )
